@@ -18,7 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
-    private Button login;
+    private Button login,home;
     private EditText emailEt, passwordEt;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
@@ -30,6 +30,7 @@ public class Login extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         emailEt = findViewById(R.id.email1);
         passwordEt = findViewById(R.id.password1);
+        home=findViewById(R.id.home);
         progressDialog = new ProgressDialog(this);
 
         login = findViewById(R.id.login);
@@ -39,8 +40,20 @@ public class Login extends AppCompatActivity {
                 login1();
             }
         });
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                home1();
+            }
+        });
 
 
+    }
+
+    private void home1() {
+        Intent intent=new Intent(Login.this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void login1() {
