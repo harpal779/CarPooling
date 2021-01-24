@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 import android.app.ProgressDialog;
 
@@ -22,12 +23,15 @@ public class Login extends AppCompatActivity {
     private EditText emailEt, passwordEt;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
+    private RadioButton dr,pas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.login);
         firebaseAuth = FirebaseAuth.getInstance();
+        dr=findViewById(R.id.driver);
+        pas=findViewById(R.id.driver1);
         emailEt = findViewById(R.id.email1);
         passwordEt = findViewById(R.id.password1);
         home=findViewById(R.id.home);
@@ -72,12 +76,23 @@ public class Login extends AppCompatActivity {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(Login.this, Interface.class);
-                    startActivity(intent);
-                    finish();
-                } else {
+                if (task.isSuccessful() && (dr.isChecked()) ) {
+
+                        Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(Login.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+               else if (task.isSuccessful() && (pas.isChecked()) ) {
+                    {
+                        Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(Login.this, Interface.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+
+                else {
                     Toast.makeText(Login.this, "Sign In fail!", Toast.LENGTH_LONG).show();
                 }
                 progressDialog.dismiss();
