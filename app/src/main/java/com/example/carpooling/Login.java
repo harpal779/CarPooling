@@ -91,6 +91,14 @@ public class Login extends AppCompatActivity {
                         finish();
                     }
                 }
+                else if (task.isSuccessful() && (pas.isChecked()==false) && (dr.isChecked()==false) ) {
+                    {
+                        Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(Login.this, Admin.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
 
                 else {
                     Toast.makeText(Login.this, "Sign In fail!", Toast.LENGTH_LONG).show();
