@@ -1,11 +1,11 @@
 package com.example.carpooling;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Admin extends AppCompatActivity {
 Button b1,b2,b3;
@@ -27,7 +27,7 @@ Button b1,b2,b3;
 
     public void Passenger(View view) {
 
-        Intent intent=new Intent(Admin.this,Interface.class);
+        Intent intent=new Intent(Admin.this,AccountView.class);
         startActivity(intent);
         finish();
     }
