@@ -14,7 +14,6 @@ Button b1,b2,b3;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
-        b1=findViewById(R.id.button5);
         b2=findViewById(R.id.button6);
         b3=findViewById(R.id.button7);
 
@@ -33,11 +32,6 @@ Button b1,b2,b3;
     }
 
 
-    public void Driver(View view) {
-        Intent intent=new Intent(Admin.this,Interface.class);
-        startActivity(intent);
-        finish();
-    }
 
     public void Logout(View view) {
         Intent intent=new Intent(Admin.this,MainActivity.class);
