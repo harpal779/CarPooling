@@ -27,7 +27,7 @@ Button b1,b2,b3;
 
     public void Passenger(View view) {
 
-        Intent intent=new Intent(Admin.this,MainActivity.class);
+        Intent intent=new Intent(Admin.this,Interface.class);
         startActivity(intent);
         finish();
     }
