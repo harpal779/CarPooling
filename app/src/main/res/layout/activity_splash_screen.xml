@@ -17,10 +17,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="172dp"
+        android:fontFamily="@font/kavoon"
         android:gravity="center_horizontal"
-        android:text="Car Pooling App"
-        android:textColor="#009688"
+        android:text="CAR POOLING APP"
+        android:textColor="#FF9800"
         android:textSize="24dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
 </RelativeLayout>

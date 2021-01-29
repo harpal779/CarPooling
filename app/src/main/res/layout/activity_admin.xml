@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFC107"
+    android:background="#FF9800"
     tools:context=".Admin">
 
     <Button
@@ -38,7 +38,7 @@
 
         android:fontFamily="@font/kavoon"
         android:text="Welcome Admin"
-        android:textColor="#1B1919"
+        android:textColor="#FAF5F5"
         android:textColorHighlight="#232121"
         android:textColorHint="#151515"
         android:textSize="20sp"

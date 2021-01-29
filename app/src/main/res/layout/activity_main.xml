@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFC107"
+    android:background="@drawable/screen"
     tools:context=".MainActivity">
 
     <TextView
@@ -25,7 +25,7 @@
         android:scrollHorizontally="true"
         android:singleLine="true"
         android:text="....WELCOME TO CARPOOLING...."
-        android:textColor="#0A0A0B"
+        android:textColor="#EBEBF4"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
