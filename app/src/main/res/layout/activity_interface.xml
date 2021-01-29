@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2196F3"
+    android:background="#FFC107"
     tools:context=".Interface">
 
     <Button
@@ -15,23 +15,30 @@
         android:layout_marginLeft="141dp"
         android:layout_marginEnd="95dp"
         android:layout_marginRight="95dp"
+        android:background="#F44336"
         android:text="Available Locations"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="204dp" />
+        tools:layout_editor_absoluteY="285dp" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="323dp"
-        android:layout_marginRight="323dp"
-        android:text="Logout"
+        android:layout_width="109dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="152dp"
+        android:layout_marginEnd="300dp"
+        android:layout_marginRight="300dp"
+        android:background="#F44336"
         android:onClick="Home"
+        android:text="Logout"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="OnClick" />
