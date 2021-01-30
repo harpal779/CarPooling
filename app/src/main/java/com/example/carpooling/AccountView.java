@@ -28,11 +28,11 @@ public class AccountView extends Admin {
 
 
 
-    EditText name_et,age_et,gender_et;
-    Button button_save;
-    RecyclerView recyclerView;
+    EditText name_id,age,gender;
+    Button button_id;
+    RecyclerView recyclerView1;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    DatabaseReference database;
     Upload upload;
     String name ;
 
@@ -42,28 +42,28 @@ public class AccountView extends Admin {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_view);
 
-        name_et = findViewById(R.id.editText_name);
-        age_et = findViewById(R.id.editText_age);
-        gender_et = findViewById(R.id.editText_gender);
+        name_id = findViewById(R.id.editText_name);
+        age = findViewById(R.id.editText_age);
+        gender = findViewById(R.id.editText_gender);
         upload = new Upload();
-        button_save = findViewById(R.id.button_save);
-        recyclerView = findViewById(R.id.recyclerview_main);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        button_id = findViewById(R.id.button_save);
+        recyclerView1 = findViewById(R.id.recyclerview_main);
+        recyclerView1.setHasFixedSize(true);
+        recyclerView1.setLayoutManager(new LinearLayoutManager(this));
 
-        databaseReference = firebaseDatabase.getInstance().getReference().child("Users");
+        database= firebaseDatabase.getInstance().getReference().child("Users");
 
 
-        button_save.setOnClickListener(new View.OnClickListener() {
+        button_id.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                upload.setName(name_et.getText().toString());
-                upload.setAge(age_et.getText().toString());
-                upload.setGender(gender_et.getText().toString());
+                upload.setName(name_id.getText().toString());
+                upload.setAge(age.getText().toString());
+                upload.setGender(gender.getText().toString());
 
-                String id = databaseReference.push().getKey();
-                databaseReference.child(id).setValue(upload);
+                String id = database.push().getKey();
+                database.child(id).setValue(upload);
                 Toast.makeText(AccountView.this, "Data saved", Toast.LENGTH_SHORT).show();
             }
         });
@@ -77,7 +77,7 @@ public class AccountView extends Admin {
 
         FirebaseRecyclerOptions<Upload>options =
                 new FirebaseRecyclerOptions.Builder<Upload>()
-                        .setQuery(databaseReference,Upload.class)
+                        .setQuery(database,Upload.class)
                         .build();
 
 
@@ -112,7 +112,7 @@ public class AccountView extends Admin {
                     }
                 };
         firebaseRecyclerAdapter.startListening();
-        recyclerView.setAdapter(firebaseRecyclerAdapter);
+        recyclerView1.setAdapter(firebaseRecyclerAdapter);
 
     }
 
@@ -124,7 +124,7 @@ public class AccountView extends Admin {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                Query query = databaseReference.orderByChild("name").equalTo(name);
+                Query query = database.orderByChild("name").equalTo(name);
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

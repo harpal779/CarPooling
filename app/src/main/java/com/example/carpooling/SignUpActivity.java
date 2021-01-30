@@ -27,10 +27,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 
 public class SignUpActivity extends AppCompatActivity {
-    private EditText emailEt, passwordEt1, passwordEt2;
+    private EditText emailId, passwordId, passwordId2;
     private RadioButton type;
     private Button SignUpButton;
-    private TextView SignInTv;
+    private TextView SignIntext;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
 
@@ -41,20 +41,20 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup);
         firebaseAuth = FirebaseAuth.getInstance();
-        emailEt = findViewById(R.id.email);
-        passwordEt1 = findViewById(R.id.password1);
-        passwordEt2 = findViewById(R.id.password2);
+        emailId = findViewById(R.id.email);
+        passwordId = findViewById(R.id.password1);
+        passwordId2 = findViewById(R.id.password2);
         SignUpButton = findViewById(R.id.register);
 
         progressDialog = new ProgressDialog(this);
-        SignInTv = findViewById(R.id.signInTv);
+        SignIntext = findViewById(R.id.signInTv);
         SignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Register();
             }
         });
-        SignInTv.setOnClickListener(new View.OnClickListener() {
+        SignIntext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SignUpActivity.this, Login.class);
@@ -65,28 +65,28 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void Register() {
-        final String email = emailEt.getText().toString();
-        final String password1 = passwordEt1.getText().toString();
-        String password2 = passwordEt2.getText().toString();
+        final String email = emailId.getText().toString();
+        final String password1 = passwordId.getText().toString();
+        String password2 = passwordId2.getText().toString();
 
 
         if (TextUtils.isEmpty(email)) {
-            emailEt.setError("Enter your email");
+            emailId.setError("Enter your email");
             return;
         } else if (TextUtils.isEmpty(password1)) {
-            passwordEt1.setError("Enter your password");
+            passwordId.setError("Enter your password");
             return;
         } else if (TextUtils.isEmpty(password2)) {
-            passwordEt2.setError("Confirm your password");
+            passwordId2.setError("Confirm your password");
             return;
         } else if (!password1.equals(password2)) {
-            passwordEt2.setError("Different password");
+            passwordId2.setError("Different password");
             return;
         } else if (password1.length() < 4) {
-            passwordEt1.setError("Length should be > 4");
+            passwordId.setError("Length should be > 4");
             return;
         } else if (!isVallidEmail(email)) {
-            emailEt.setError("invalid email");
+            emailId.setError("invalid email");
             return;
         }
         progressDialog.setMessage("Please wait...");

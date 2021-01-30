@@ -20,20 +20,20 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
     private Button login,home;
-    private EditText emailEt, passwordEt;
+    private EditText emailId, passwordId;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
-    private RadioButton dr,pas;
+    private RadioButton dri,pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         firebaseAuth = FirebaseAuth.getInstance();
-        dr=findViewById(R.id.driver);
-        pas=findViewById(R.id.driver1);
-        emailEt = findViewById(R.id.email1);
-        passwordEt = findViewById(R.id.password1);
+        dri=findViewById(R.id.driver);
+        pass=findViewById(R.id.driver1);
+        emailId = findViewById(R.id.email1);
+        passwordId = findViewById(R.id.password1);
         home=findViewById(R.id.home);
         progressDialog = new ProgressDialog(this);
 
@@ -61,13 +61,13 @@ public class Login extends AppCompatActivity {
     }
 
     private void login1() {
-        String email = emailEt.getText().toString();
-        String password = passwordEt.getText().toString();
+        String email = emailId.getText().toString();
+        String password = passwordId.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            emailEt.setError("Enter your email");
+            emailId.setError("Enter your email");
             return;
         } else if (TextUtils.isEmpty(password)) {
-            passwordEt.setError("Enter your password");
+            passwordId.setError("Enter your password");
             return;
         }
         progressDialog.setMessage("Please wait...");
@@ -76,14 +76,14 @@ public class Login extends AppCompatActivity {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful() && (dr.isChecked()) ) {
+                if (task.isSuccessful() && (dri.isChecked()) ) {
 
                         Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(Login.this, MainActivity.class);
                         startActivity(intent);
                         finish();
                     }
-               else if (task.isSuccessful() && (pas.isChecked()) ) {
+               else if (task.isSuccessful() && (pass.isChecked()) ) {
                     {
                         Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(Login.this, Interface.class);
@@ -91,7 +91,7 @@ public class Login extends AppCompatActivity {
                         finish();
                     }
                 }
-                else if (task.isSuccessful() && (pas.isChecked()==false) && (dr.isChecked()==false) ) {
+                else if (task.isSuccessful() && (pass.isChecked()==false) && (dri.isChecked()==false) ) {
                     {
                         Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(Login.this, Admin.class);
