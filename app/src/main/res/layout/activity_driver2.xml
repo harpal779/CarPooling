@@ -3,7 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#FF9800"
     android:layout_height="match_parent"
     tools:context=".Driver2">
 
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="128dp"
+        android:layout_height="62dp"
+        android:background="#F44336"
+        android:fontFamily="@font/fredoka_one"
+        android:text="Location"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="139dp"
+        tools:layout_editor_absoluteY="216dp" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="146dp"
+        android:layout_height="56dp"
+        android:background="#F44336"
+        android:fontFamily="@font/fredoka_one"
+        android:text="Start Chat"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="123dp"
+        tools:layout_editor_absoluteY="389dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
