@@ -79,7 +79,7 @@ public class Login extends AppCompatActivity {
                 if (task.isSuccessful() && (dri.isChecked()) ) {
 
                         Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(Login.this, MainActivity.class);
+                        Intent intent = new Intent(Login.this, Driver1.class);
                         startActivity(intent);
                         finish();
                     }
