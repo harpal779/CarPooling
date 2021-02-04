@@ -18,9 +18,10 @@
         android:background="@drawable/border"
         android:fontFamily="@font/fredoka_one"
         android:text="Post Ride"
+        android:onClick="PostRide"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints,OnClick" />
 
     <Button
         android:id="@+id/button11"
