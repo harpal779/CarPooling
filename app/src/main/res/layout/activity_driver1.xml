@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8AFF9800"
+    android:background="@drawable/driver1"
     tools:context=".Driver1">
 
     <Button
@@ -18,10 +18,10 @@
         android:background="@drawable/border"
         android:fontFamily="@font/fredoka_one"
         android:text="Post Ride"
-        android:textColor="#F1EAEA"
+        android:onClick="PostRide"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints,OnClick" />
 
     <Button
         android:id="@+id/button11"
@@ -34,7 +34,6 @@
         android:background="@drawable/border"
         android:fontFamily="@font/fredoka_one"
         android:text="RIDE LIST"
-        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button5"
         tools:ignore="MissingConstraints" />
@@ -49,7 +48,6 @@
         android:background="@drawable/border"
         android:fontFamily="@font/fredoka_one"
         android:text="Logout"
-        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button11"
         tools:ignore="MissingConstraints" />
