@@ -36,7 +36,8 @@
         android:text="RIDE LIST"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button5"
-        tools:ignore="MissingConstraints" />
+        android:onClick="Ridelist"
+        tools:ignore="MissingConstraints,OnClick" />
 
     <Button
         android:id="@+id/button8"
