@@ -27,8 +27,10 @@
         android:layout_marginLeft="9dp"
         android:layout_marginTop="71dp"
         android:text="Home"
+        android:onClick="Homee"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        tools:ignore="OnClick" />
 
     <Button
         android:id="@+id/button14"
@@ -38,6 +40,8 @@
         android:layout_marginLeft="122dp"
         android:layout_marginTop="74dp"
         android:text="Logout"
+        android:onClick="Logoutt"
         app:layout_constraintStart_toEndOf="@+id/button13"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        tools:ignore="OnClick" />
 </androidx.constraintlayout.widget.ConstraintLayout>
