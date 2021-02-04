@@ -155,7 +155,9 @@
         android:layout_marginLeft="53dp"
         android:layout_marginTop="26dp"
         android:text="Cancel"
+        android:onClick="Cancel"
         app:layout_constraintStart_toEndOf="@+id/button9"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber"
+        tools:ignore="OnClick" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

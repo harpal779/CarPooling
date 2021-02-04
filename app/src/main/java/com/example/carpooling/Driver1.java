@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class Driver1 extends AppCompatActivity {
-Button postride,Ridelist;
+Button postride,Ridelist,logout;
 
 
     @Override
@@ -17,6 +17,7 @@ Button postride,Ridelist;
         setContentView(R.layout.activity_driver1);
         postride=findViewById(R.id.button5);
         Ridelist=findViewById(R.id.button11);
+        logout=findViewById(R.id.button8);
 
     }
 
@@ -35,5 +36,11 @@ Button postride,Ridelist;
         startActivity(intent);
         finish();
 
+    }
+
+    public void logoutt(View view) {
+        Intent intent=new Intent(Driver1.this,Login.class);
+        startActivity(intent);
+        finish();
     }
 }
