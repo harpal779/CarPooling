@@ -38,7 +38,7 @@
 
         android:fontFamily="@font/kavoon"
         android:text="Welcome  Admin"
-        android:textColor="#F8B4B4"
+        android:textColor="#88F44336"
         android:textColorHighlight="#232121"
         android:textColorHint="#151515"
         android:textSize="40sp"

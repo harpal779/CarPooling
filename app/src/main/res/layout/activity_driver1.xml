@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/driver1"
+    android:background="#8AFF9800"
     tools:context=".Driver1">
 
     <Button
@@ -17,8 +17,9 @@
         android:layout_marginTop="176dp"
         android:background="@drawable/border"
         android:fontFamily="@font/fredoka_one"
-        android:text="Post Ride"
         android:onClick="PostRide"
+        android:text="Post Ride"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints,OnClick" />
@@ -34,6 +35,7 @@
         android:background="@drawable/border"
         android:fontFamily="@font/fredoka_one"
         android:text="RIDE LIST"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button5"
         android:onClick="Ridelist"
@@ -49,18 +51,21 @@
         android:background="@drawable/border"
         android:fontFamily="@font/fredoka_one"
         android:text="Logout"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button11"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="105dp"
+        android:layout_height="51dp"
         android:layout_marginStart="301dp"
         android:layout_marginLeft="301dp"
         android:layout_marginTop="19dp"
+        android:background="#60F44336"
         android:text="Edit Profile"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
