@@ -140,7 +140,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login" />
-
     <Button
         android:id="@+id/forget"
         android:layout_width="94dp"
@@ -150,8 +149,12 @@
         android:layout_marginTop="11dp"
         android:background="@drawable/border"
         android:fontFamily="@font/fredoka_one"
-        android:text="forget"
         android:onClick="forget"
+        android:text="forget"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/home" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

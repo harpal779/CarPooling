@@ -1,5 +1,6 @@
 package com.example.carpooling;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class Login extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private RadioButton dri,pass;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
