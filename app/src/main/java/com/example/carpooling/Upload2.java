@@ -1,5 +1,6 @@
 package com.example.carpooling;
 
+
 public class Upload2 {
 
     private String Carname;
@@ -11,74 +12,77 @@ public class Upload2 {
     private String Time;
     private String AvailableSeats;
     private String Price;
-    
-    public Upload2(){}
 
+    public Upload2(){}
     public String getCarname() {
         return Carname;
     }
 
-    public void setCarname(String Carname) {
-        this.Carname = Carname;
+    public void setCarname(String carname) {
+        Carname = carname;
     }
 
     public String getPhone() {
         return Phone;
     }
 
-    public void setPhone(String Phone) {
-        this.Phone = Phone;
+    public void setPhone(String phone) {
+        Phone = phone;
     }
 
     public String getModel() {
         return Model;
     }
 
-    public void setModel(String Model) {
-        this.Model = Model;
+    public void setModel(String model) {
+        Model = model;
     }
 
     public String getFrom() {
         return From;
     }
 
-    public void setFrom(String From) {
-        this.From = From;
+    public void setFrom(String from) {
+        From = from;
     }
+
     public String getTo() {
         return To;
     }
 
-    public void setTo(String To) {
-        this.To = To;
+    public void setTo(String to) {
+        To = to;
     }
+
     public String getDate() {
         return Date;
     }
 
-    public void setDate(String Date) {
-        this.Date = Date;
+    public void setDate(String date) {
+        Date = date;
     }
 
     public String getTime() {
         return Time;
     }
 
-    public void setTime(String Time) {
-        this.Time = Time;
+    public void setTime(String time) {
+        Time = time;
     }
+
     public String getAvailableSeats() {
         return AvailableSeats;
     }
 
-    public void setAvailableSeats(String AvailableSeats) {
-        this.AvailableSeats = AvailableSeats;
+    public void setAvailableSeats(String availableSeats) {
+        AvailableSeats = availableSeats;
     }
+
     public String getPrice() {
         return Price;
     }
 
-    public void setPrice(String Price) {
-        this.Price = Price;
+    public void setPrice(String price) {
+        Price = price;
     }
 }
