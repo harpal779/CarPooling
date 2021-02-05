@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,11 +19,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
 
 public class SignUpActivity extends AppCompatActivity {
     private EditText emailId, passwordId, passwordId2;
@@ -41,7 +36,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup);
         firebaseAuth = FirebaseAuth.getInstance();
-        emailId = findViewById(R.id.email);
+        emailId = findViewById(R.id.email1);
         passwordId = findViewById(R.id.password1);
         passwordId2 = findViewById(R.id.password2);
         SignUpButton = findViewById(R.id.register);
