@@ -9,12 +9,25 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Interface extends AppCompatActivity {
-Button b2;
+Button b2,b21;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interface);
         b2=findViewById(R.id.button2);
+        b21=findViewById(R.id.button21);
+        b21.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                booked();
+            }
+        });
+    }
+
+    private void booked() {
+        Intent intent = new Intent(Interface.this, Passenger1.class);
+        startActivity(intent);
+        finish();
     }
 
     public void Home(View view) {
