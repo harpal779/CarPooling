@@ -73,9 +73,12 @@
         android:id="@+id/button12"
         android:layout_width="105dp"
         android:layout_height="51dp"
+        android:layout_marginStart="301dp"
+        android:layout_marginLeft="301dp"
+        android:layout_marginTop="19dp"
         android:background="#F44336"
         android:text="Edit Profile"
         android:textColor="#FFFFFF"
-        tools:layout_editor_absoluteX="301dp"
-        tools:layout_editor_absoluteY="19dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#8AFF9800"
     tools:context=".Driver3">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -21,26 +22,37 @@
 
     <Button
         android:id="@+id/button13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginLeft="9dp"
-        android:layout_marginTop="71dp"
-        android:text="Home"
+        android:layout_width="130dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="88dp"
+        android:background="@drawable/border"
+        android:fontFamily="@font/fredoka_one"
         android:onClick="Homee"
+        android:text="Home"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView"
         tools:ignore="OnClick" />
 
     <Button
         android:id="@+id/button14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="122dp"
-        android:layout_marginLeft="122dp"
-        android:layout_marginTop="74dp"
-        android:text="Logout"
+        android:layout_width="137dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/border"
+        android:fontFamily="@font/fredoka_one"
         android:onClick="Logoutt"
+        android:text="Logout"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button13"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView"
         tools:ignore="OnClick" />

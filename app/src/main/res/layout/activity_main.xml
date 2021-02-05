@@ -25,7 +25,8 @@
         android:textStyle="normal"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="38dp"
-        tools:text="WELCOME TO CARPOOLING" />
+        tools:text="WELCOME TO CARPOOLING"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView"
