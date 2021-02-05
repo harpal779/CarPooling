@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Passenger2" />
-        <activity android:name=".forgetpassword"></activity>
+        <activity android:name=".forgetpassword" />
         <activity android:name=".Passenger1" />
         <activity android:name=".Driver3" />
         <activity android:name=".Driver2" />
