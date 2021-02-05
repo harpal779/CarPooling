@@ -14,8 +14,8 @@ Button home,back,logout;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passenger1);
         home=findViewById(R.id.button18);
-        back=findViewById(R.id.button18);
-        logout=findViewById(R.id.button18);
+        back=findViewById(R.id.button15);
+        logout=findViewById(R.id.button17);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
