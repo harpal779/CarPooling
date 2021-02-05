@@ -1,8 +1,6 @@
 package com.example.carpooling;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,7 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
-import android.app.ProgressDialog;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -19,7 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
-    private Button login,home;
+    private Button login,home,forget;
     private EditText emailId, passwordId;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
@@ -33,6 +33,7 @@ public class Login extends AppCompatActivity {
         dri=findViewById(R.id.driver);
         pass=findViewById(R.id.driver1);
         emailId = findViewById(R.id.email1);
+        forget=findViewById(R.id.forget);
         passwordId = findViewById(R.id.password1);
         home=findViewById(R.id.home);
         progressDialog = new ProgressDialog(this);
@@ -106,5 +107,12 @@ public class Login extends AppCompatActivity {
                 progressDialog.dismiss();
             }
         });
+    }
+
+    public void forget(View view) {
+
+        Intent intent = new Intent(Login.this, forgetpassword.class);
+        startActivity(intent);
+        finish();
     }
 }
