@@ -22,10 +22,13 @@ public class ViewHolder2 extends RecyclerView.ViewHolder {
         });
     }
 
-    public void setData(Context context,String CarName,String Phone,String Model,String From,String To,String Date,String Time,String AvailableSeats,String Price){
+    public void setData(Context context, String carname, String phone, String model, String From, String to,
+                        String date, String time, String AvailableSeats,String Price){
         TextView textView = itemView.findViewById(R.id.textview_row);
 
-        textView.setText("CarName: " + CarName + "\n"  + "Phone: "  + Phone +"\n"+ "Model: " + Model + "\n" + "From: " + From + "TO: " + To + "\n"  + "Date: "  + Date +"\n"+ "Time : " + Time + "\n" + "AvailableSeats : " + AvailableSeats + "\n" + "Price: " + Price);
+        textView.setText("CarName: " + carname + "\n"  + "Phone: "  + phone +"\n"+ "Model: " + model + "\n" +
+                "From: " + From + "TO: " + to + "\n"  + "Date: "  + date +"\n"+ "Time : " + time  + "\n" +
+                "AvailableSeats : " + AvailableSeats + "\n" + "Price: " + Price);
     }
 
     private ViewHolder.Clicklistener mClicklistener;
