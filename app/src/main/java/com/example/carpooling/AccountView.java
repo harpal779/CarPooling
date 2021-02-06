@@ -86,12 +86,12 @@ public class AccountView extends Admin {
         progressDialog.show();
         progressDialog.setCanceledOnTouchOutside(false);
         String id = databasereference.push().getKey();
-        databasereference.child(id).setValue(upload);
 
         firebaseAuth.createUserWithEmailAndPassword(e, p).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    databasereference.child(firebaseAuth.getCurrentUser().getUid()).setValue(upload);
 
                     Toast.makeText(AccountView.this, "Successfully registered", Toast.LENGTH_LONG).show();
 
