@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -25,6 +26,7 @@ public class Driver2 extends Driver1 {
     Upload2 upload2;
     DatabaseReference database;
     FirebaseDatabase firebaseDatabase;
+    private String auth;
 
 
 
@@ -51,6 +53,7 @@ public class Driver2 extends Driver1 {
         AvailableSeats = findViewById(R.id.Seats);
         Price = findViewById(R.id.editTextNumber);
         post = findViewById(R.id.button9);
+        auth=FirebaseAuth.getInstance().getCurrentUser().getUid();
         upload2 = new Upload2();
         database= firebaseDatabase.getInstance().getReference().child("Ride");
 
@@ -69,7 +72,7 @@ public class Driver2 extends Driver1 {
                 upload2.setAvailableSeats(AvailableSeats.getText().toString());
                 upload2.setPrice(Price.getText().toString());
                 String id = database.push().getKey();
-                database.child(id).setValue(upload2);
+                database.child(auth).setValue(upload2);
                 Toast.makeText(Driver2.this, "Data saved", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Driver2.this, Driver1.class);
                 startActivity(intent);
