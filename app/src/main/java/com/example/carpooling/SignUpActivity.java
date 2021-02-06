@@ -101,11 +101,11 @@ public class SignUpActivity extends AppCompatActivity {
         upload3.setEmail(emailId.getText().toString());
         upload3.setPassword(passwordId.getText().toString());
         String id = databaseReference.push().getKey();
-        databaseReference.child(id).setValue(upload3);
         firebaseAuth.createUserWithEmailAndPassword(email, password1).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    databaseReference.child(firebaseAuth.getCurrentUser().getUid()).setValue(upload3);
 
                     Toast.makeText(SignUpActivity.this, "Successfully registered", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
