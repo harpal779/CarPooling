@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,20 +30,26 @@ public class Driver3 extends AppCompatActivity {
     Button h, l;
     RecyclerView recyclerView1;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference database;
     String name;
+    private  DatabaseReference databasereference;
+    private FirebaseAuth firebaseAuth;
+
 
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver3);
+        firebaseAuth = FirebaseAuth.getInstance();
         h = findViewById(R.id.button13);
         l = findViewById(R.id.button14);
         recyclerView1 = findViewById(R.id.recyclerView);
         recyclerView1.setHasFixedSize(true);
         recyclerView1.setLayoutManager(new LinearLayoutManager(this));
-        database = firebaseDatabase.getInstance().getReference().child("Ride");
+
+        databasereference = firebaseDatabase.getInstance().getReference().child("Ride");
+
+
 
 
     }
@@ -66,7 +73,7 @@ public class Driver3 extends AppCompatActivity {
 
         FirebaseRecyclerOptions<Upload2> options1 =
                 new FirebaseRecyclerOptions.Builder<Upload2>()
-                        .setQuery(database,Upload2.class)
+                        .setQuery(databasereference,Upload2.class)
                         .build();
 
 
@@ -75,13 +82,10 @@ public class Driver3 extends AppCompatActivity {
                     @Override
                     protected void onBindViewHolder(@NonNull ViewHolder2 holder, int position, @NonNull Upload2 model) {
                         holder.setData(getApplicationContext(),model.getCarname(),model.getPhone(),model.getModel(),model.getFrom(),model.getTo(),model.getDate(),model.getTime(),model.getAvailableSeats(),model.getPrice());
-
                         holder.setOnClickListener(new ViewHolder.Clicklistener() {
                             @Override
                             public void onItemlongClick(View view, int position) {
-
                                 name = getItem(position).getPhone();
-
                                 showDeleteDataDialog(name);
                             }
                         });
@@ -112,7 +116,7 @@ public class Driver3 extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                Query query = database.orderByChild("phone").equalTo(name);
+                Query query = databasereference.orderByChild("phone").equalTo(name);
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
