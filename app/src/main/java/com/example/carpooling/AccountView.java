@@ -1,6 +1,7 @@
 package com.example.carpooling;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +13,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,47 +35,74 @@ public class AccountView extends Admin {
 
 
 
-    EditText name_id,age,gender;
+    EditText password1,email1;
     Button button_id,b16;
     RecyclerView recyclerView1;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference database;
+  private  DatabaseReference databasereference;
     Upload upload;
     String name ;
+    private ProgressDialog progressDialog;
+    private FirebaseAuth firebaseAuth;
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_view);
-b16=findViewById(R.id.button16);
-        name_id = findViewById(R.id.editText_name);
-        age = findViewById(R.id.editText_age);
-        gender = findViewById(R.id.editText_gender);
+        firebaseAuth = FirebaseAuth.getInstance();
+        b16 = findViewById(R.id.button16);
+        password1 = findViewById(R.id.password);
+        email1 = findViewById(R.id.email);
         upload = new Upload();
         button_id = findViewById(R.id.button_save);
         recyclerView1 = findViewById(R.id.recyclerview_main);
         recyclerView1.setHasFixedSize(true);
         recyclerView1.setLayoutManager(new LinearLayoutManager(this));
-
-        database= firebaseDatabase.getInstance().getReference().child("Users");
+        progressDialog = new ProgressDialog(this);
 
 
         button_id.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
+                Register();
 
-                upload.setName(name_id.getText().toString());
-                upload.setAge(age.getText().toString());
-                upload.setGender(gender.getText().toString());
-
-                String id = database.push().getKey();
-                database.child(id).setValue(upload);
-                Toast.makeText(AccountView.this, "Data saved", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void Register() {
+        final String e = email1.getText().toString();
+        final String p = password1.getText().toString();
+
+        databasereference = firebaseDatabase.getInstance().getReference().child("Users");
+        upload.setPassword(password1.getText().toString());
+        upload.setEmail(email1.getText().toString());
+        progressDialog.setMessage("Please wait...");
+        progressDialog.show();
+        progressDialog.setCanceledOnTouchOutside(false);
+        String id = databasereference.push().getKey();
+        databasereference.child(id).setValue(upload);
+
+        firebaseAuth.createUserWithEmailAndPassword(e, p).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+
+                    Toast.makeText(AccountView.this, "Successfully registered", Toast.LENGTH_LONG).show();
 
 
+                } else {
+                    Toast.makeText(AccountView.this, "Sign up fail!", Toast.LENGTH_LONG).show();
+                }
+                progressDialog.dismiss();
+
+            }
+        });
     }
 
     @Override
@@ -78,7 +111,7 @@ b16=findViewById(R.id.button16);
 
         FirebaseRecyclerOptions<Upload>options =
                 new FirebaseRecyclerOptions.Builder<Upload>()
-                        .setQuery(database,Upload.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Users"),Upload.class)
                         .build();
 
 
@@ -86,13 +119,13 @@ b16=findViewById(R.id.button16);
                 new FirebaseRecyclerAdapter<Upload, ViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Upload model) {
-                        holder.setData(getApplicationContext(),model.getName(),model.getAge(),model.getGender());
+                        holder.setData(getApplicationContext(),model.getPassword(),model.getEmail());
 
                         holder.setOnClickListener(new ViewHolder.Clicklistener() {
                             @Override
                             public void onItemlongClick(View view, int position) {
 
-                                name = getItem(position).getName();
+                                name = getItem(position).getPassword();
 
                                 showDeleteDataDialog(name);
                             }
@@ -117,7 +150,7 @@ b16=findViewById(R.id.button16);
 
     }
 
-    private void showDeleteDataDialog(final String name){
+    private void showDeleteDataDialog(final String email){
         AlertDialog .Builder builder = new AlertDialog.Builder(AccountView.this);
         builder.setTitle("Delete");
         builder.setMessage("Are you Sure to Delete this Data");
@@ -125,7 +158,7 @@ b16=findViewById(R.id.button16);
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                Query query = database.orderByChild("name").equalTo(name);
+                Query query = databasereference.orderByChild("phone").equalTo(name);
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
