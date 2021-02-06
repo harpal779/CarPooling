@@ -55,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#F44336"
-        android:text="Button"
+        android:text="Save"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -63,12 +63,13 @@
         app:layout_constraintTop_toBottomOf="@+id/editText_age" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="390dp"
         android:layout_height="360dp"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/button_save"
-        tools:ignore="MissingConstraints"
 
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="-14dp">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -76,4 +77,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="14dp"
+        android:text="Back"
+        android:textColor="#FFFFFF"
+        android:background="#F44336"
+        android:onClick="admin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:text="Back"
+        tools:ignore="OnClick" />
 </androidx.constraintlayout.widget.ConstraintLayout>

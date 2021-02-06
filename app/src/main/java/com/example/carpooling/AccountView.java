@@ -2,6 +2,7 @@ package com.example.carpooling;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,7 @@ public class AccountView extends Admin {
 
 
     EditText name_id,age,gender;
-    Button button_id;
+    Button button_id,b16;
     RecyclerView recyclerView1;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference database;
@@ -41,7 +42,7 @@ public class AccountView extends Admin {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_view);
-
+b16=findViewById(R.id.button16);
         name_id = findViewById(R.id.editText_name);
         age = findViewById(R.id.editText_age);
         gender = findViewById(R.id.editText_gender);
@@ -150,5 +151,10 @@ public class AccountView extends Admin {
         });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+    public void admin(View view) {
+        Intent intent=new Intent(AccountView.this,Admin.class);
+        startActivity(intent);
+        finish();
     }
 }
