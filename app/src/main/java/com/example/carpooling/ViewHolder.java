@@ -22,10 +22,10 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void setData(Context context,String name,String age,String gender){
+    public void setData(Context context,String password,String email){
         TextView textView = itemView.findViewById(R.id.textview_row);
 
-        textView.setText("Name: " + name + "\n"  + "Age: "  + age +"\n"+ "Gender: " + gender);
+        textView.setText("Password: " + password + "\n" + "Email: " + email);
     }
 
     private ViewHolder.Clicklistener mClicklistener;
