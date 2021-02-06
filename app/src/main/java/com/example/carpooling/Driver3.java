@@ -1,10 +1,5 @@
 package com.example.carpooling;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -16,6 +11,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -24,7 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.auth.User;
 
 public class Driver3 extends AppCompatActivity {
     Button h, l;
@@ -43,8 +42,8 @@ public class Driver3 extends AppCompatActivity {
         recyclerView1 = findViewById(R.id.recyclerView);
         recyclerView1.setHasFixedSize(true);
         recyclerView1.setLayoutManager(new LinearLayoutManager(this));
+        database = firebaseDatabase.getInstance().getReference().child("Ride");
 
-        database = firebaseDatabase.getInstance().getReference().child("Rider");
 
     }
 
@@ -113,14 +112,15 @@ public class Driver3 extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                Query query = database.orderByChild("name").equalTo(name);
+                Query query = database.orderByChild("phone").equalTo(name);
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot ds : dataSnapshot.getChildren()){
-                            ds.getRef().removeValue();
+                            ds.getRef().child("Ride").removeValue();
+                            Toast.makeText(Driver3.this, "Data deleted", Toast.LENGTH_SHORT).show();
+
                         }
-                        Toast.makeText(Driver3.this, "Data deleted", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
