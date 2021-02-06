@@ -33,7 +33,7 @@ public class Driver3 extends AppCompatActivity {
     String name;
     private  DatabaseReference databasereference;
     private FirebaseAuth firebaseAuth;
-
+private String auth;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -46,7 +46,7 @@ public class Driver3 extends AppCompatActivity {
         recyclerView1 = findViewById(R.id.recyclerView);
         recyclerView1.setHasFixedSize(true);
         recyclerView1.setLayoutManager(new LinearLayoutManager(this));
-
+        auth=firebaseAuth.getCurrentUser().getUid();
         databasereference = firebaseDatabase.getInstance().getReference().child("Ride");
 
 
