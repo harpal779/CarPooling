@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
     private EditText emailId, passwordId, passwordId2;
@@ -28,6 +29,10 @@ public class SignUpActivity extends AppCompatActivity {
     private TextView SignIntext;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
+    FirebaseDatabase firebaseDatabase;
+    Upload upload3;
+
+
 
     private DatabaseReference databaseReference;
 
@@ -40,6 +45,7 @@ public class SignUpActivity extends AppCompatActivity {
         passwordId = findViewById(R.id.password1);
         passwordId2 = findViewById(R.id.password2);
         SignUpButton = findViewById(R.id.register);
+        upload3 = new Upload();
 
         progressDialog = new ProgressDialog(this);
         SignIntext = findViewById(R.id.signInTv);
@@ -57,9 +63,13 @@ public class SignUpActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
+
+
     }
 
-    private void Register() {
+    public void Register() {
         final String email = emailId.getText().toString();
         final String password1 = passwordId.getText().toString();
         String password2 = passwordId2.getText().toString();
@@ -87,7 +97,11 @@ public class SignUpActivity extends AppCompatActivity {
         progressDialog.setMessage("Please wait...");
         progressDialog.show();
         progressDialog.setCanceledOnTouchOutside(false);
-
+        databaseReference = firebaseDatabase.getInstance().getReference().child("Users");
+        upload3.setEmail(emailId.getText().toString());
+        upload3.setPassword(passwordId.getText().toString());
+        String id = databaseReference.push().getKey();
+        databaseReference.child(id).setValue(upload3);
         firebaseAuth.createUserWithEmailAndPassword(email, password1).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
