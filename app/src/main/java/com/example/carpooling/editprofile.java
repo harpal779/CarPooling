@@ -51,7 +51,7 @@ t=findViewById(R.id.enterpassword);
     }
 
     private void back() {
-        Intent intent=new Intent(editprofile.this,Interface.class);
+        Intent intent=new Intent(editprofile.this,MainActivity.class);
         startActivity(intent);
         finish();
     }
