@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Interface extends AppCompatActivity {
-Button b2,b21,b4;
+Button b2,b21,b4,b22;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +21,7 @@ Button b2,b21,b4;
         b21.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                booked();
+                booked() ;
             }
         });
         b4.setOnClickListener(new View.OnClickListener() {
@@ -30,6 +30,7 @@ Button b2,b21,b4;
                 logout();
             }
         });
+        b22=findViewById(R.id.button22);
     }
 
     private void logout() {
@@ -50,5 +51,11 @@ Button b2,b21,b4;
         startActivity(intent);
         finish();
 
+    }
+
+    public void edit(View view) {
+        Intent intent = new Intent(Interface.this, editprofile.class);
+        startActivity(intent);
+        finish();
     }
 }

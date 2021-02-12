@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.carpooling.ViewHolder.Clicklistener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -85,14 +86,19 @@ Button back,logout;
         FirebaseRecyclerAdapter<Upload2,ViewHolder2> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<Upload2, ViewHolder2>(options1) {
                     @Override
-                    protected void onBindViewHolder(@NonNull ViewHolder2 holder, int position, @NonNull Upload2 model) {
+                    protected void onBindViewHolder(@NonNull final ViewHolder2 holder, int position, @NonNull final Upload2 model) {
                         holder.setData(getApplicationContext(),model.getCarname(),model.getPhone(),model.getModel(),model.getFrom(),model.getTo(),model.getDate(),model.getTime(),model.getAvailableSeats(),model.getPrice());
-                        holder.setOnClickListener(new ViewHolder.Clicklistener() {
+                        holder.setOnClickListener(new Clicklistener() {
                             @Override
                             public void onItemlongClick(View view, int position) {
-                                name = getItem(position).getPhone();
+                                DatabaseReference ds = firebaseDatabase.getInstance().getReference("Ride");
+                                ds.removeValue();
 
                             }
+
+
+
+
                         });
                     }
                     @NonNull
@@ -110,5 +116,8 @@ Button back,logout;
         recyclerView1.setAdapter(firebaseRecyclerAdapter);
 
     }
+
+
+
 
                 }
