@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#8AFF9800"
     tools:context=".Passenger2">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -23,6 +24,8 @@
         android:layout_marginStart="13dp"
         android:layout_marginLeft="13dp"
         android:layout_marginTop="21dp"
+        android:background="@drawable/border"
+        android:textColor="#FFFFFF"
         android:text="Back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
@@ -34,6 +37,8 @@
         android:layout_marginStart="121dp"
         android:layout_marginLeft="121dp"
         android:layout_marginTop="21dp"
+        android:background="@drawable/border"
+        android:textColor="#FFFFFF"
         android:text="Logout"
         app:layout_constraintStart_toEndOf="@+id/button19"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
