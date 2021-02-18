@@ -72,7 +72,7 @@ public class Driver2 extends Driver1 {
                 upload2.setAvailableSeats(AvailableSeats.getText().toString());
                 upload2.setPrice(Price.getText().toString());
                 String id = database.push().getKey();
-                database.child(auth).setValue(upload2);
+                database.child(id).setValue(upload2);
                 Toast.makeText(Driver2.this, "Data saved", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Driver2.this, Driver1.class);
                 startActivity(intent);
