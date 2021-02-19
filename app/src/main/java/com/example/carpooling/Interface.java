@@ -40,7 +40,7 @@ Button b2,b21,b4,b22;
     }
 
     private void booked() {
-        Intent intent = new Intent(Interface.this, Passenger1.class);
+        Intent intent = new Intent(Interface.this, MainActivity2.class);
         startActivity(intent);
         finish();
     }
