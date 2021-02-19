@@ -46,7 +46,7 @@ Button b2,b21,b4,b22;
     }
 
     public void Home(View view) {
-        Toast.makeText(Interface.this, "Logout Successfully", Toast.LENGTH_LONG).show();
+        Toast.makeText(Interface.this, "Success", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(Interface.this, Passenger2.class);
         startActivity(intent);
         finish();

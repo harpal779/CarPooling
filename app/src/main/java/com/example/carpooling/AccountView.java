@@ -41,7 +41,7 @@ public class AccountView extends Admin {
     FirebaseDatabase firebaseDatabase;
   private  DatabaseReference databasereference;
     Upload upload;
-    String name ;
+    String email ;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
 
@@ -79,7 +79,7 @@ public class AccountView extends Admin {
         final String e = email1.getText().toString();
         final String p = password1.getText().toString();
 
-        databasereference = firebaseDatabase.getInstance().getReference().child("Users");
+        databasereference = firebaseDatabase.getInstance().getReference("Users");
         upload.setPassword(password1.getText().toString());
         upload.setEmail(email1.getText().toString());
         progressDialog.setMessage("Please wait...");
@@ -125,9 +125,9 @@ public class AccountView extends Admin {
                             @Override
                             public void onItemlongClick(View view, int position) {
 
-                                name = getItem(position).getPassword();
+                                email = getItem(position).getEmail();
 
-                                showDeleteDataDialog(name);
+                                showDeleteDataDialog(email);
                             }
                         });
 
@@ -158,7 +158,7 @@ public class AccountView extends Admin {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                Query query = databasereference.orderByChild("phone").equalTo(name);
+                Query query = databasereference.orderByChild("email").equalTo(email);
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

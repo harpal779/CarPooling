@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -24,9 +25,10 @@ public class Driver2 extends Driver1 {
     Button cancel,post;
     EditText CarName,Phone,Model,From,To,Date,Time,AvailableSeats,Price;
     Upload2 upload2;
-    DatabaseReference database;
+    DatabaseReference database,database1;
     FirebaseDatabase firebaseDatabase;
-    private String auth;
+    FirebaseUser user;
+    private FirebaseAuth auth;
 
 
 
@@ -53,9 +55,11 @@ public class Driver2 extends Driver1 {
         AvailableSeats = findViewById(R.id.Seats);
         Price = findViewById(R.id.editTextNumber);
         post = findViewById(R.id.button9);
-        auth=FirebaseAuth.getInstance().getCurrentUser().getUid();
         upload2 = new Upload2();
-        database= firebaseDatabase.getInstance().getReference().child("Ride");
+        auth=FirebaseAuth.getInstance();
+        database= firebaseDatabase.getInstance().getReference("Ride");
+        database1= firebaseDatabase.getInstance().getReference("All");
+
 
 
         post.setOnClickListener(new View.OnClickListener() {
@@ -71,8 +75,11 @@ public class Driver2 extends Driver1 {
                 upload2.setTime(Time.getText().toString());
                 upload2.setAvailableSeats(AvailableSeats.getText().toString());
                 upload2.setPrice(Price.getText().toString());
+
                 String id = database.push().getKey();
-                database.child(id).setValue(upload2);
+                String id1 = database1.push().getKey();
+                database.child(auth.getCurrentUser().getUid()).child(id).setValue(upload2);
+                database1.child(id1).setValue(upload2);
                 Toast.makeText(Driver2.this, "Data saved", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Driver2.this, Driver1.class);
                 startActivity(intent);

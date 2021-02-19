@@ -1,6 +1,7 @@
 package com.example.carpooling;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -34,6 +35,10 @@ public class ViewHolder2 extends RecyclerView.ViewHolder {
     private ViewHolder.Clicklistener mClicklistener;
     public interface Clicklistener{
         void onItemlongClick(View view , int position);
+
+
+
+
     }
 
     public void setOnClickListener(ViewHolder.Clicklistener clickListener){

@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,16 +18,23 @@ import com.example.carpooling.ViewHolder.Clicklistener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Objects;
 
 public class Passenger2 extends AppCompatActivity {
 Button back,logout;
     RecyclerView recyclerView1;
     FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databasereference;
-    private FirebaseAuth firebaseAuth;
-    private String auth,name;
+    private DatabaseReference databasereference,database;
+
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +42,13 @@ Button back,logout;
         setContentView(R.layout.activity_passenger2);
         back=findViewById(R.id.button19);
         logout=findViewById(R.id.button20);
-        firebaseAuth = FirebaseAuth.getInstance();
         recyclerView1 = findViewById(R.id.recyclerView2);
         recyclerView1.setHasFixedSize(true);
         recyclerView1.setLayoutManager(new LinearLayoutManager(this));
-        auth=firebaseAuth.getCurrentUser().getUid();
-        databasereference = firebaseDatabase.getInstance().getReference().child("Ride");
+       databasereference = firebaseDatabase.getInstance().getReference("All");
+
+
+
 
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -76,9 +86,10 @@ Button back,logout;
     @Override
     protected void onStart() {
         super.onStart();
-
         FirebaseRecyclerOptions<Upload2> options1 =
+
                 new FirebaseRecyclerOptions.Builder<Upload2>()
+
                         .setQuery(databasereference,Upload2.class)
                         .build();
 
@@ -87,20 +98,19 @@ Button back,logout;
                 new FirebaseRecyclerAdapter<Upload2, ViewHolder2>(options1) {
                     @Override
                     protected void onBindViewHolder(@NonNull final ViewHolder2 holder, int position, @NonNull final Upload2 model) {
+
                         holder.setData(getApplicationContext(),model.getCarname(),model.getPhone(),model.getModel(),model.getFrom(),model.getTo(),model.getDate(),model.getTime(),model.getAvailableSeats(),model.getPrice());
                         holder.setOnClickListener(new Clicklistener() {
                             @Override
                             public void onItemlongClick(View view, int position) {
-                                DatabaseReference ds = firebaseDatabase.getInstance().getReference("Ride");
-                                ds.removeValue();
+
+                                Toast.makeText(Passenger2.this, "Booked.....", Toast.LENGTH_LONG).show();
 
                             }
-
-
-
-
                         });
-                    }
+
+                        }
+
                     @NonNull
                     @Override
                     public ViewHolder2 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

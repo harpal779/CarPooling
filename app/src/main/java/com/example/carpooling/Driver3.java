@@ -19,36 +19,41 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Driver3 extends AppCompatActivity {
     Button h, l;
     RecyclerView recyclerView1;
-    FirebaseDatabase firebaseDatabase;
+    FirebaseDatabase Database;
+    FirebaseUser user;
     String name;
-    private  DatabaseReference databasereference;
-    private FirebaseAuth firebaseAuth;
-private String auth;
+    DatabaseReference databasereference,data;
+    FirebaseAuth firebaseAuth;
+
 
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver3);
-        firebaseAuth = FirebaseAuth.getInstance();
         h = findViewById(R.id.button13);
         l = findViewById(R.id.button14);
         recyclerView1 = findViewById(R.id.recyclerView);
         recyclerView1.setHasFixedSize(true);
         recyclerView1.setLayoutManager(new LinearLayoutManager(this));
-        auth=firebaseAuth.getCurrentUser().getUid();
-        databasereference = firebaseDatabase.getInstance().getReference().child("Ride");
 
+
+
+      databasereference = FirebaseDatabase.getInstance().getReference("Ride").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
 
 
@@ -74,6 +79,7 @@ private String auth;
         FirebaseRecyclerOptions<Upload2> options1 =
                 new FirebaseRecyclerOptions.Builder<Upload2>()
                         .setQuery(databasereference,Upload2.class)
+
                         .build();
 
 
