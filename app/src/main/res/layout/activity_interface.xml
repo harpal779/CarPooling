@@ -81,7 +81,7 @@
         android:background="@drawable/border"
         android:fontFamily="@font/fredoka_one"
         android:onClick="Home"
-        android:text="Booked Ride"
+        android:text="Book Ride"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
