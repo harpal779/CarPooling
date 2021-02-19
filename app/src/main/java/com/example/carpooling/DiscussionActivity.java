@@ -1,6 +1,7 @@
 package com.example.carpooling;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -20,7 +21,7 @@ import java.util.Map;
 
 public class DiscussionActivity extends AppCompatActivity {
 
-    Button btnSendMsg;
+    Button btnSendMsg,b26;
     EditText etMsg;
 
     ListView lvDiscussion;
@@ -38,6 +39,14 @@ public class DiscussionActivity extends AppCompatActivity {
 
         btnSendMsg = (Button) findViewById(R.id.btnSendMsg);
         etMsg = (EditText) findViewById(R.id.etMessage);
+b26=findViewById(R.id.button26);
+
+        b26.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
 
         lvDiscussion = (ListView) findViewById(R.id.lvConversation);
         arrayAdpt = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listConversation);
@@ -96,7 +105,11 @@ public class DiscussionActivity extends AppCompatActivity {
         });
     }
 
-
+    private void logout() {
+        Intent intent=new Intent(DiscussionActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
 
     public void updateConversation(DataSnapshot dataSnapshot){
