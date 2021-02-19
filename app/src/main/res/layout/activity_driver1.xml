@@ -81,4 +81,15 @@
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="151dp"
+        android:layout_marginRight="151dp"
+        android:layout_marginBottom="19dp"
+        android:text="Chat"
+        app:layout_constraintBottom_toTopOf="@+id/car"
+        app:layout_constraintEnd_toStartOf="@+id/button12" />
 </androidx.constraintlayout.widget.ConstraintLayout>
