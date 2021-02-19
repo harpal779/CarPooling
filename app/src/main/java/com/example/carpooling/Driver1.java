@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class Driver1 extends AppCompatActivity {
-Button postride,Ridelist,logout,edit;
+Button postride,Ridelist,logout,edit,chat;
 
 
     @Override
@@ -19,6 +19,7 @@ Button postride,Ridelist,logout,edit;
         Ridelist=findViewById(R.id.button11);
         logout=findViewById(R.id.button8);
         edit=findViewById(R.id.button12);
+        chat=findViewById(R.id.button27);
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,8 +27,20 @@ Button postride,Ridelist,logout,edit;
                 back();
             }
         });
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chat();
+            }
+        });
 
 
+    }
+
+    private void chat() {
+        Intent intent=new Intent(Driver1.this,MainActivity2.class);
+        startActivity(intent);
+        finish();
     }
 
     private void back() {
@@ -55,7 +68,7 @@ Button postride,Ridelist,logout,edit;
     }
 
     public void logoutt(View view) {
-        Intent intent=new Intent(Driver1.this,MainActivity2.class);
+        Intent intent=new Intent(Driver1.this,Login.class);
         startActivity(intent);
         finish();
     }
