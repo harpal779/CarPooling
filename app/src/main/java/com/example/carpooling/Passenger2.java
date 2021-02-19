@@ -105,7 +105,9 @@ Button back,logout;
                             public void onItemlongClick(View view, int position) {
 
                                 Toast.makeText(Passenger2.this, "Booked.....", Toast.LENGTH_LONG).show();
-
+                                Intent intent = new Intent(Passenger2.this, MainActivity2.class);
+                                startActivity(intent);
+                                finish();
                             }
                         });
 

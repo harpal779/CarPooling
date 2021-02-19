@@ -55,7 +55,7 @@ Button postride,Ridelist,logout,edit;
     }
 
     public void logoutt(View view) {
-        Intent intent=new Intent(Driver1.this,Login.class);
+        Intent intent=new Intent(Driver1.this,MainActivity2.class);
         startActivity(intent);
         finish();
     }
