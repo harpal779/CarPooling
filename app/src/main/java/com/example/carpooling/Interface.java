@@ -1,61 +1,106 @@
-package com.example.carpooling;
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8AFF9800"
+    tools:context=".Interface">
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="253dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="81dp"
 
-import androidx.appcompat.app.AppCompatActivity;
+        android:layout_marginLeft="81dp"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/border"
+        android:fontFamily="@font/fredoka_one"
+        android:onClick="Home"
+        android:text=" Available Rides"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_car"
+        tools:ignore="OnClick" />
 
-public class Interface extends AppCompatActivity {
-Button b2,b21,b4,b22;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_interface);
-        b2=findViewById(R.id.button2);
-        b21=findViewById(R.id.button21);
-        b4=findViewById(R.id.button4);
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="183dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/border"
+        android:fontFamily="@font/fredoka_one"
+        android:text="LogOut"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button21"
+        tools:ignore="MissingConstraints" />
 
-        b21.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                booked() ;
-            }
-        });
-        b4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logout();
-            }
-        });
-        b22=findViewById(R.id.button22);
-    }
+    <Button
+        android:id="@+id/button22"
+        android:layout_width="183dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/border"
+        android:fontFamily="@font/fredoka_one"
+        android:text="Edit Profile"
+        android:onClick="edit"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintTop_toBottomOf="@+id/button21"
+        tools:ignore="MissingConstraints,OnClick" />
 
-    private void logout() {
-        Intent intent = new Intent(Interface.this, Login.class);
-        startActivity(intent);
-        finish();
-    }
+    <ImageView
+        android:id="@+id/logo_car"
+        android:layout_width="348dp"
+        android:layout_height="210dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="49dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/carlogo"
+        tools:ignore="MissingConstraints" />
 
-    private void booked() {
-        Intent intent = new Intent(Interface.this, MainActivity2.class);
-        startActivity(intent);
-        finish();
-    }
+    <Button
+        android:id="@+id/button21"
+        android:layout_width="257dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="81dp"
 
-    public void Home(View view) {
-        Toast.makeText(Interface.this, "Success", Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(Interface.this, Passenger2.class);
-        startActivity(intent);
-        finish();
+        android:layout_marginLeft="81dp"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/border"
+        android:fontFamily="@font/fredoka_one"
+        android:onClick="Home"
+        android:text="Book Ride"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        tools:ignore="OnClick" />
 
-    }
+    <Button
+        android:id="@+id/button23"
+        android:layout_width="145dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/border"
+        android:fontFamily="@font/fredoka_one"
+        android:text="Need Ride"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button4" />
 
-    public void edit(View view) {
-        Intent intent = new Intent(Interface.this, editprofile.class);
-        startActivity(intent);
-        finish();
-    }
-}
+</androidx.constraintlayout.widget.ConstraintLayout>
