@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,12 +60,12 @@ public class Driver2 extends Driver1 {
         auth=FirebaseAuth.getInstance();
         database= firebaseDatabase.getInstance().getReference("Ride");
         database1= firebaseDatabase.getInstance().getReference("All");
-
-
-
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
 
                 upload2.setCarname(CarName.getText().toString());
                 upload2.setPhone(Phone.getText().toString());

@@ -86,11 +86,11 @@
         android:layout_marginLeft="36dp"
         android:layout_marginTop="27dp"
         android:ems="10"
-        android:hint="Date"
+        android:hint="Date DD/MM/YY"
         android:inputType="date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/From"
-        tools:text="Date" />
+        tools:text="Date DD/MM/YY" />
 
     <EditText
         android:id="@+id/editTextTime"
@@ -100,11 +100,11 @@
         android:layout_marginLeft="38dp"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="Time"
+        android:hint="Time HH:MM AM/PM"
         android:inputType="time"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate"
-        tools:text="Time" />
+        tools:text="Time HH:MM AM/PM" />
 
     <EditText
         android:id="@+id/Seats"
@@ -128,11 +128,11 @@
         android:layout_marginLeft="36dp"
         android:layout_marginTop="22dp"
         android:ems="10"
-        android:hint="Price"
+        android:hint="Price in $"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Seats"
-        tools:text="Price" />
+        tools:text="Price in $" />
 
     <Button
         android:id="@+id/button9"

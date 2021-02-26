@@ -17,7 +17,6 @@ Button b2,b21,b4,b22;
         b2=findViewById(R.id.button2);
         b21=findViewById(R.id.button21);
         b4=findViewById(R.id.button4);
-
         b21.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,13 +39,14 @@ Button b2,b21,b4,b22;
     }
 
     private void booked() {
+        Toast.makeText(Interface.this, "Please Contact with Driver Phone Number To Book Ride ", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(Interface.this, MainActivity2.class);
         startActivity(intent);
         finish();
     }
 
     public void Home(View view) {
-        Toast.makeText(Interface.this, "Success", Toast.LENGTH_LONG).show();
+        Toast.makeText(Interface.this, "Please Contact with Driver Phone Number To Book Ride ", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(Interface.this, Passenger2.class);
         startActivity(intent);
         finish();
@@ -54,6 +54,7 @@ Button b2,b21,b4,b22;
     }
 
     public void edit(View view) {
+        Toast.makeText(Interface.this, "Please Contact with Driver Phone Number To Book Ride ", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(Interface.this, editprofile.class);
         startActivity(intent);
         finish();

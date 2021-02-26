@@ -54,6 +54,7 @@ public class Driver3 extends AppCompatActivity {
 
 
       databasereference = FirebaseDatabase.getInstance().getReference("Ride").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        data = FirebaseDatabase.getInstance().getReference("All");
 
 
 
@@ -127,7 +128,7 @@ public class Driver3 extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot ds : dataSnapshot.getChildren()){
-                            ds.getRef().child("Ride").removeValue();
+                            ds.getRef().removeValue();
                             Toast.makeText(Driver3.this, "Data deleted", Toast.LENGTH_SHORT).show();
 
                         }
