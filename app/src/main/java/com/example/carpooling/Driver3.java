@@ -123,8 +123,24 @@ public class Driver3 extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                Query query = databasereference.orderByChild("phone").equalTo(name);
+                Query query = data.orderByChild("phone").equalTo(name);
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot ds : dataSnapshot.getChildren()){
+                            ds.getRef().removeValue();
+                            Toast.makeText(Driver3.this, "Data deleted", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+                Query query1 = databasereference.orderByChild("phone").equalTo(name);
+                query1.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot ds : dataSnapshot.getChildren()){
