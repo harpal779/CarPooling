@@ -38,7 +38,7 @@ Button postride,Ridelist,logout,edit,chat;
     }
 
     private void chat() {
-        Intent intent=new Intent(Driver1.this,MainActivity2.class);
+        Intent intent=new Intent(Driver1.this,SendMessage.class);
         startActivity(intent);
         finish();
     }

@@ -40,7 +40,7 @@ Button b2,b21,b4,b22;
 
     private void booked() {
         Toast.makeText(Interface.this, "Please Contact with Driver Phone Number To Book Ride ", Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(Interface.this, MainActivity2.class);
+        Intent intent = new Intent(Interface.this, SendMessage.class);
         startActivity(intent);
         finish();
     }
