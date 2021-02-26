@@ -9,56 +9,15 @@
     tools:context=".MainActivity">
 
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPersonName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColorHint="#0B0A0A"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textPersonName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColorHint="#0E0E0E"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
-
-    <Button
-        android:id="@+id/button_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:background="#F44336"
-        android:text="Save"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
-
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="390dp"
         android:layout_height="360dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/button_save"
 
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-14dp">
+        tools:layout_editor_absoluteX="-14dp"
+        tools:layout_editor_absoluteY="239dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_main"

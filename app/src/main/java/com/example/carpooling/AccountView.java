@@ -34,18 +34,14 @@ import com.google.firebase.database.ValueEventListener;
 public class AccountView extends Admin {
 
 
-
-    EditText password1,email1;
-    Button button_id,b16;
+    Button b16;
     RecyclerView recyclerView1;
     FirebaseDatabase firebaseDatabase;
-  private  DatabaseReference databasereference;
+    private DatabaseReference databasereference;
     Upload upload;
-    String email ;
+    String name;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
-
-
 
 
     @Override
@@ -54,140 +50,122 @@ public class AccountView extends Admin {
         setContentView(R.layout.activity_account_view);
         firebaseAuth = FirebaseAuth.getInstance();
         b16 = findViewById(R.id.button16);
-        password1 = findViewById(R.id.password);
-        email1 = findViewById(R.id.email);
-        upload = new Upload();
-        button_id = findViewById(R.id.button_save);
         recyclerView1 = findViewById(R.id.recyclerview_main);
         recyclerView1.setHasFixedSize(true);
         recyclerView1.setLayoutManager(new LinearLayoutManager(this));
         progressDialog = new ProgressDialog(this);
-
-
-        button_id.setOnClickListener(new View.OnClickListener() {
-
-
-            @Override
-            public void onClick(View view) {
-                Register();
-
-            }
-        });
-    }
-
-    public void Register() {
-        final String e = email1.getText().toString();
-        final String p = password1.getText().toString();
-
-        databasereference = firebaseDatabase.getInstance().getReference("Users");
-        upload.setPassword(password1.getText().toString());
-        upload.setEmail(email1.getText().toString());
-        progressDialog.setMessage("Please wait...");
-        progressDialog.show();
-        progressDialog.setCanceledOnTouchOutside(false);
-        String id = databasereference.push().getKey();
-
-        firebaseAuth.createUserWithEmailAndPassword(e, p).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    databasereference.child(firebaseAuth.getCurrentUser().getUid()).setValue(upload);
-
-                    Toast.makeText(AccountView.this, "Successfully registered", Toast.LENGTH_LONG).show();
-
-
-                } else {
-                    Toast.makeText(AccountView.this, "Sign up fail!", Toast.LENGTH_LONG).show();
-                }
-                progressDialog.dismiss();
-
-            }
-        });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        FirebaseRecyclerOptions<Upload>options =
-                new FirebaseRecyclerOptions.Builder<Upload>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Users"),Upload.class)
-                        .build();
-
-
-        FirebaseRecyclerAdapter<Upload,ViewHolder> firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<Upload, ViewHolder>(options) {
-                    @Override
-                    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Upload model) {
-                        holder.setData(getApplicationContext(),model.getPassword(),model.getEmail());
-
-                        holder.setOnClickListener(new ViewHolder.Clicklistener() {
-                            @Override
-                            public void onItemlongClick(View view, int position) {
-
-                                email = getItem(position).getEmail();
-
-                                showDeleteDataDialog(email);
-                            }
-                        });
-
-
-                    }
-
-
-                    @NonNull
-                    @Override
-                    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-                        View view = LayoutInflater.from(parent.getContext())
-                                .inflate(R.layout.row,parent,false);
-
-                        return new ViewHolder(view);
-                    }
-                };
-        firebaseRecyclerAdapter.startListening();
-        recyclerView1.setAdapter(firebaseRecyclerAdapter);
+        databasereference = FirebaseDatabase.getInstance().getReference("Users");
 
     }
 
-    private void showDeleteDataDialog(final String email){
-        AlertDialog .Builder builder = new AlertDialog.Builder(AccountView.this);
-        builder.setTitle("Delete");
-        builder.setMessage("Are you Sure to Delete this Data");
-        builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+        @Override
+        protected void onStart() {
+            super.onStart();
 
-                Query query = databasereference.orderByChild("email").equalTo(email);
-                query.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot ds : dataSnapshot.getChildren()){
-                            ds.getRef().removeValue();
+            FirebaseRecyclerOptions<Upload> options1 =
+                    new FirebaseRecyclerOptions.Builder<Upload>()
+                            .setQuery(databasereference,Upload.class)
+
+                            .build();
+
+
+            FirebaseRecyclerAdapter<Upload,ViewHolder> firebaseRecyclerAdapter =
+                    new FirebaseRecyclerAdapter<Upload, ViewHolder>(options1) {
+                        @Override
+                        protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Upload model) {
+                            holder.setData(getApplicationContext(),model.getPassword(),model.getEmail());
+                            holder.setOnClickListener(new ViewHolder.Clicklistener() {
+                                @Override
+                                public void onItemlongClick(View view, int position) {
+                                    name = getItem(position).getPassword();
+                                    showDeleteDataDialog(name);
+                                }
+                            });
                         }
-                        Toast.makeText(AccountView.this, "Data deleted", Toast.LENGTH_SHORT).show();
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    }
-                });
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
 
-                dialogInterface.dismiss();
-            }
-        });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
+                        @NonNull
+                        @Override
+                        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+                            View view = LayoutInflater.from(parent.getContext())
+                                    .inflate(R.layout.row,parent,false);
+
+                            return new ViewHolder(view);
+                        }
+                    };
+            firebaseRecyclerAdapter.startListening();
+            recyclerView1.setAdapter(firebaseRecyclerAdapter);
+
+        }
+
+        private void showDeleteDataDialog(final String name){
+            AlertDialog.Builder builder = new AlertDialog.Builder(AccountView.this);
+            builder.setTitle("Delete");
+            builder.setMessage("Are you Sure to Delete this Data");
+            builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Query query1 = databasereference.orderByChild("email").equalTo(name);
+                    query1.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot ds : dataSnapshot.getChildren()){
+                                ds.getRef().removeValue();
+                                Toast.makeText(AccountView.this, "Data deleted", Toast.LENGTH_SHORT).show();
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    dialogInterface.dismiss();
+                }
+            });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
-    public void admin(View view) {
-        Intent intent=new Intent(AccountView.this,Admin.class);
-        startActivity(intent);
-        finish();
-    }
-}
+
