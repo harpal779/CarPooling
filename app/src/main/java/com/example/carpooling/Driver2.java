@@ -73,25 +73,34 @@ public class Driver2 extends Driver1 {
         database = firebaseDatabase.getInstance().getReference("Ride");
         database1 = firebaseDatabase.getInstance().getReference("All");
 
-
         Date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Calendar calender = Calendar.getInstance();
-                final int year = calender.get(Calendar.YEAR);
-                final int month = calender.get(Calendar.MONTH);
-                final int date = calender.get(Calendar.DATE);
+                // calender class's instance and get current date , month and year from calender
+                final Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR); // current year
+                int mMonth = c.get(Calendar.MONTH); // current month
+                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                // date picker dialog
+                picker = new DatePickerDialog(Driver2.this,
+                        new DatePickerDialog.OnDateSetListener() {
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(Driver2.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int date) {
-                        Date.setText(SimpleDateFormat.getDateInstance().format(calender.getTime()));
-                    }
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                // set day of month , month and year value in the edit text
+                                Date.setText(dayOfMonth + "/"
+                                        + (monthOfYear + 1) + "/" + year);
 
-                }, year, month, date);
-                datePickerDialog.show();
+                            }
+                        }, mYear, mMonth, mDay);
+                picker.show();
             }
         });
+
+
+
+
 
 
         Time.setOnClickListener(new View.OnClickListener() {
