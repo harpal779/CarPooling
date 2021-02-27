@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -17,7 +18,7 @@ import android.widget.Toast;
 public class SendMessage extends AppCompatActivity {
 
     EditText phone,messsage;
-Button b23;
+Button b23,b27;
 
 
     @Override
@@ -28,7 +29,20 @@ Button b23;
 phone=findViewById(R.id.editTextPhone2);
 messsage=findViewById(R.id.editTextTextPersonName);
 b23=findViewById(R.id.button23);
+b27=findViewById(R.id.button27);
+        b27.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                back();
+            }
+        });
 
+    }
+
+    private void back() {
+        Intent intent=new Intent(SendMessage.this,Interface.class);
+        startActivity(intent);
+        finish();
     }
 
 
